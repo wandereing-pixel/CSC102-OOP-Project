@@ -72,21 +72,24 @@ public class Welcome {
                                 select_brand_status = false;
 
                                 Car selectedBrand;
-                                if (selected ==1) {
+                                if (selected == 1) {
                                     selectedBrand = new Honda();
-                                } else if (selected ==2) {
+                                } else if (selected == 2) {
                                     selectedBrand = new Toyota();
-                                } else if (selected ==3) {
+                                } else if (selected == 3) {
                                     selectedBrand = new Mazda();
                                 } else {
                                     selectedBrand = new Nissan();
-                                } selectedBrand.displayCars();
+                                }
+                                selectedBrand.displayCars();
 
                                 if (selected == 1) {
                                     boolean status_select_car = true;
                                     while (status_select_car) {
-                                        /*Honda myHondaShop = new Honda();
-                                        myHondaShop.displayHondaCars();*/
+                                        /*
+                                         * Honda myHondaShop = new Honda();
+                                         * myHondaShop.displayHondaCars();
+                                         */
                                         try {
                                             System.out.print("Which car you that you want? = ");
                                             int user_selected_car = input.nextInt();
@@ -133,8 +136,10 @@ public class Welcome {
                                     while (status_select_car) {
 
                                         try {
-                                            /*Toyota myToyota = new Toyota();
-                                            myToyota.displayToyotaCars();*/
+                                            /*
+                                             * Toyota myToyota = new Toyota();
+                                             * myToyota.displayToyotaCars();
+                                             */
                                             System.out.print("Which car you that you want? = ");
                                             int user_selected_car = input.nextInt();
 
@@ -176,8 +181,10 @@ public class Welcome {
                                     boolean status_select_car = true;
                                     while (status_select_car) {
                                         try {
-                                            /*Mazda myMazda = new Mazda();
-                                            myMazda.displayMazdaCars();*/
+                                            /*
+                                             * Mazda myMazda = new Mazda();
+                                             * myMazda.displayMazdaCars();
+                                             */
                                             System.out.print("Which car you that you want? = ");
                                             int user_selected_car = input.nextInt();
 
@@ -219,8 +226,10 @@ public class Welcome {
                                     boolean status_select_car = true;
                                     while (status_select_car) {
                                         try {
-                                            /*Nissan myNissan = new Nissan();
-                                            myNissan.displayNissanCars();*/
+                                            /*
+                                             * Nissan myNissan = new Nissan();
+                                             * myNissan.displayNissanCars();
+                                             */
                                             System.out.print("Which car you that you want? = ");
                                             int user_selected_car = input.nextInt();
 
@@ -270,13 +279,35 @@ public class Welcome {
 
                     System.out.println("Car selected successfully");
 
+                    boolean costomer_status = true;
                     input.nextLine();
-                    System.out.print("enter your name: ");
-                    String customerName = input.nextLine();
-                    System.out.print("enter your phone number: ");
-                    String phoneNumber = input.nextLine();
-                    userinfo.setCustomerInfo(customerName, phoneNumber);
+                    outer: while (costomer_status) {
+                        try {
 
+                            System.out.print("enter your name: ");
+                            String customerName = input.nextLine();
+
+                            for (int i = 0; i < customerName.length(); i++) {
+                                char s = customerName.charAt(i);
+                                if ((!Character.isLetterOrDigit(s) && !Character.isWhitespace(s))
+                                        || Character.isDigit(s)) {
+
+                                    continue outer;
+
+                                }
+                            }
+                            System.out.print("enter your phone number: ");
+                            int phoneNumber = input.nextInt();
+
+                            userinfo.setCustomerInfo(customerName, phoneNumber);
+                            costomer_status = false;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Please type in correct type");
+
+                            input.nextLine();
+                        }
+
+                    }
 
                     userinfo.ShowInfo();
                     bill.ShowTotal();
@@ -299,17 +330,17 @@ public class Welcome {
                     }
 
                 } else if (user_choose == 2) {
-                    /*userinfo.ShowInfo();*/
+                    /* userinfo.ShowInfo(); */
                     System.out.println("********");
                     System.out.println("You'll need to book a vehicle first.");
                     System.out.println("********");
-                   // bill.ShowTotal();
+                    // bill.ShowTotal();
                 } else if (user_choose == 3) {
                     System.out.println("********");
                     System.out.println("Invalid Choice; No Booking to cancel");
                     System.out.println("********");
                     continue;
-                    /*status = false;*/
+                    /* status = false; */
                 }
             } catch (InputMismatchException e) {
 
