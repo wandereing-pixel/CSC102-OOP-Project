@@ -3,25 +3,31 @@ public class Userinfo {
     private int car_price;
     private int period;
     private String customerName;
-    private String phoneNumber;
+    private int phoneNumber;
 
-    /*public Userinfo(String name, int car_price) {
-        this.car_name = name;
-        this.car_price = car_price;
-    }*/
+    /*
+     * public Userinfo(String name, int car_price) {
+     * this.car_name = name;
+     * this.car_price = car_price;
+     * }
+     */
 
-    /*public Userinfo(int period) {
-        this.period = period;
-    }*/
+    /*
+     * public Userinfo(int period) {
+     * this.period = period;
+     * }
+     */
 
     public Userinfo() {
 
     }
 
-    /*public void setCustomerName(String customerName, int phoneNumber) {
-        this.customerName = customerName;
-        this.phoneNumber = phoneNumber;
-    }*/
+    /*
+     * public void setCustomerName(String customerName, int phoneNumber) {
+     * this.customerName = customerName;
+     * this.phoneNumber = phoneNumber;
+     * }
+     */
 
     public void setName_Price(String name, int price) {
         this.car_name = name;
@@ -41,8 +47,7 @@ public class Userinfo {
         System.out.printf("Period = %d Day\n", period);
     }
 
-
-    public void setCustomerInfo(String customerName, String phoneNumber) {
+    public void setCustomerInfo(String customerName, int phoneNumber) {
         this.customerName = customerName;
         this.phoneNumber = phoneNumber;
     }
